@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/nhl-playoffs/static/css/main.2cc77fb5.chunk.css",
-    "main.js": "/nhl-playoffs/static/js/main.f8c03940.chunk.js",
-    "main.js.map": "/nhl-playoffs/static/js/main.f8c03940.chunk.js.map",
+    "main.css": "/nhl-playoffs/static/css/main.dc04bd83.chunk.css",
+    "main.js": "/nhl-playoffs/static/js/main.0965fe2c.chunk.js",
+    "main.js.map": "/nhl-playoffs/static/js/main.0965fe2c.chunk.js.map",
     "runtime-main.js": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js",
     "runtime-main.js.map": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js.map",
     "static/js/2.b1bf2404.chunk.js": "/nhl-playoffs/static/js/2.b1bf2404.chunk.js",
     "static/js/2.b1bf2404.chunk.js.map": "/nhl-playoffs/static/js/2.b1bf2404.chunk.js.map",
     "index.html": "/nhl-playoffs/index.html",
-    "static/css/main.2cc77fb5.chunk.css.map": "/nhl-playoffs/static/css/main.2cc77fb5.chunk.css.map",
+    "static/css/main.dc04bd83.chunk.css.map": "/nhl-playoffs/static/css/main.dc04bd83.chunk.css.map",
     "static/js/2.b1bf2404.chunk.js.LICENSE.txt": "/nhl-playoffs/static/js/2.b1bf2404.chunk.js.LICENSE.txt",
     "static/media/ana.0aead088.svg": "/nhl-playoffs/static/media/ana.0aead088.svg",
     "static/media/ari.713b6119.svg": "/nhl-playoffs/static/media/ari.713b6119.svg",
@@ -46,7 +46,7 @@
   "entrypoints": [
     "static/js/runtime-main.cad7ea4a.js",
     "static/js/2.b1bf2404.chunk.js",
-    "static/css/main.2cc77fb5.chunk.css",
-    "static/js/main.f8c03940.chunk.js"
+    "static/css/main.dc04bd83.chunk.css",
+    "static/js/main.0965fe2c.chunk.js"
   ]
 }
