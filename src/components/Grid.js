@@ -40,7 +40,13 @@ const Grid = ({ teams }) => {
         const teamId = team.team.id;
         const abbr = getTeamData(teamId).abbreviation.toLowerCase();
         return (
-          <Team key={teamId} team={abbr} data={team} offset={range.start} />
+          <Team
+            key={teamId}
+            team={abbr}
+            data={team}
+            offset={range.start}
+            cutoff={teams[3].points}
+          />
         );
       })}
 

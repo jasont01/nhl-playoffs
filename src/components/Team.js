@@ -12,9 +12,11 @@ const Team = ({
     gamesPlayed,
   },
   offset,
+  cutoff,
 }) => {
   const start = points - offset;
   const span = (SEASON_GAMES - gamesPlayed) * PTS_PER_GAME;
+  const isFaded = points + span < cutoff;
 
   const tooltip = `${name}<br/>
   Game Played: ${gamesPlayed}<br/>
@@ -23,7 +25,7 @@ const Team = ({
 
   return (
     <div
-      className={`row ${team}`}
+      className={`row ${team} ${isFaded ? 'faded' : undefined}`}
       data-tip={tooltip}
       data-for={id}
       style={{

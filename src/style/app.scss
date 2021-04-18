@@ -56,6 +56,9 @@ body {
     height: 100vh;
     border-right: 1px dotted black;
   }
+  &.faded {
+    opacity: 0.4;
+  }
 }
 
 .label {
