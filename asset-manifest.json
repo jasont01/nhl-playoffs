@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nhl-playoffs/static/css/main.bc2ff623.chunk.css",
-    "main.js": "/nhl-playoffs/static/js/main.0965fe2c.chunk.js",
-    "main.js.map": "/nhl-playoffs/static/js/main.0965fe2c.chunk.js.map",
+    "main.js": "/nhl-playoffs/static/js/main.0cd85847.chunk.js",
+    "main.js.map": "/nhl-playoffs/static/js/main.0cd85847.chunk.js.map",
     "runtime-main.js": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js",
     "runtime-main.js.map": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js.map",
     "static/js/2.b1bf2404.chunk.js": "/nhl-playoffs/static/js/2.b1bf2404.chunk.js",
@@ -47,6 +47,6 @@
     "static/js/runtime-main.cad7ea4a.js",
     "static/js/2.b1bf2404.chunk.js",
     "static/css/main.bc2ff623.chunk.css",
-    "static/js/main.0965fe2c.chunk.js"
+    "static/js/main.0cd85847.chunk.js"
   ]
 }
