@@ -16,7 +16,7 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(80, 1em);
-  overflow: hidden;
+  overflow-y: hidden;
   margin-left: 4em;
   margin-top: 2em;
 }

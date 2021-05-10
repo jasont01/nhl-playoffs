@@ -13,15 +13,17 @@ const Team = ({
   },
   offset,
   cutoff,
+  row,
 }) => {
   const start = points - offset;
-  const span = (SEASON_GAMES - gamesPlayed) * PTS_PER_GAME;
+  const span = (SEASON_GAMES - gamesPlayed) * PTS_PER_GAME || 1;
   const isFaded = points + span < cutoff;
+  const gamesRemaining = SEASON_GAMES - gamesPlayed
 
   const tooltip = `${name}<br/>
-  Game Played: ${gamesPlayed}<br/>
+  Games Remaining: ${gamesRemaining}<br/>
   Current Points: ${points}<br/>
-  Possible Points: ${span + points}`;
+  Possible Points: ${gamesRemaining ? span + points : points}`;
 
   return (
     <div
@@ -30,6 +32,7 @@ const Team = ({
       data-for={id}
       style={{
         gridColumn: `${start} / span ${span}`,
+        gridRow: `${row}`,
       }}
     >
       <Logo id={id} team={team} />

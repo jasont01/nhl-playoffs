@@ -36,7 +36,7 @@ const Grid = ({ teams }) => {
 
   return (
     <div className='grid-container'>
-      {teams.map((team) => {
+      {teams.map((team, idx) => {
         const teamId = team.team.id;
         const abbr = getTeamData(teamId).abbreviation.toLowerCase();
         return (
@@ -46,11 +46,12 @@ const Grid = ({ teams }) => {
             data={team}
             offset={range.start}
             cutoff={teams[3].points}
+            row={idx + 1}
           />
         );
       })}
 
-      {range.end ? <GridLabel range={range} /> : null}
+      {range.end ? <GridLabel range={range} row={teams.length + 1} /> : null}
     </div>
   );
 };

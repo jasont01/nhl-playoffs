@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const GridLabel = ({ range: { start, end } }) => {
+const GridLabel = ({ range: { start, end }, row }) => {
   const [label, setLabel] = useState([]);
   useEffect(() => {
     setLabel([...Array(end - start).keys()].map((n) => n + start + 1));
@@ -9,7 +9,13 @@ const GridLabel = ({ range: { start, end } }) => {
   return label.map((n, indx) => {
     const classList = indx === 0 ? 'label first' : 'label';
     return (
-      <div key={indx} className={classList}>
+      <div
+        key={indx}
+        className={classList}
+        style={{
+          gridRow: `${row}`,
+        }}
+      >
         {n}
       </div>
     );
