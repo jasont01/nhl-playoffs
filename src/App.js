@@ -22,7 +22,7 @@ const App = () => {
         const name = division.name.split(' ').pop();
         return { value: division.id, label: name };
       });
-      setOptions(divisions);
+      setOptions([...divisions, { value: 99, label: 'All' }]);
     };
     fetchDivisionData();
   }, []);
@@ -31,10 +31,16 @@ const App = () => {
     const fetchStandings = async () => {
       const res = await fetch(`${API_BASE_URL}/standings/byDivision`);
       const data = await res.json();
-      const standings = data.records.filter(
-        (record) => record.division.id === divisionId
+      const standings =
+        divisionId === 99
+          ? data.records.map((record) => record)
+          : data.records.filter((record) => record.division.id === divisionId);
+      setTeams(
+        standings
+          .map((division) => division.teamRecords)
+          .flat()
+          .sort((a, b) => b.points - a.points)
       );
-      setTeams(standings[0].teamRecords);
     };
     divisionId && fetchStandings();
   }, [divisionId]);
