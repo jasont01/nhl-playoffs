@@ -32,7 +32,7 @@ const Grid = ({ teams }) => {
   }, [teams]);
 
   const getTeamData = (teamId) =>
-    teamData.filter((team) => team.id === teamId).pop();
+    teamData.find((team) => team.id === teamId);
 
   return (
     <div className='grid-container'>
@@ -45,7 +45,7 @@ const Grid = ({ teams }) => {
             team={abbr}
             data={team}
             offset={range.start}
-            cutoff={teams[3].points}
+            eliminated={!team.hasOwnProperty('clinchIndicator')}
             row={idx + 1}
           />
         );

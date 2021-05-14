@@ -39,7 +39,7 @@ const App = () => {
         standings
           .map((division) => division.teamRecords)
           .flat()
-          .sort((a, b) => b.points - a.points)
+          .sort((a, b) => a.leagueRank - b.leagueRank)
       );
     };
     divisionId && fetchStandings();

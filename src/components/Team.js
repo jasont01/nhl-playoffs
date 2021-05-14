@@ -1,4 +1,5 @@
 import ReactTooltip from 'react-tooltip';
+import clsx from 'clsx';
 import Logo from './Logo';
 
 const SEASON_GAMES = 56;
@@ -12,13 +13,12 @@ const Team = ({
     gamesPlayed,
   },
   offset,
-  cutoff,
+  eliminated,
   row,
 }) => {
   const start = points - offset;
   const span = (SEASON_GAMES - gamesPlayed) * PTS_PER_GAME || 1;
-  const isFaded = points + span < cutoff;
-  const gamesRemaining = SEASON_GAMES - gamesPlayed
+  const gamesRemaining = SEASON_GAMES - gamesPlayed;
 
   const tooltip = `${name}<br/>
   Games Remaining: ${gamesRemaining}<br/>
@@ -27,7 +27,7 @@ const Team = ({
 
   return (
     <div
-      className={`row ${team} ${isFaded ? 'faded' : undefined}`}
+      className={clsx('row', team, eliminated && 'faded')}
       data-tip={tooltip}
       data-for={id}
       style={{
