@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nhl-playoffs/static/css/main.bc2ff623.chunk.css",
-    "main.js": "/nhl-playoffs/static/js/main.933197ea.chunk.js",
-    "main.js.map": "/nhl-playoffs/static/js/main.933197ea.chunk.js.map",
-    "runtime-main.js": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js",
-    "runtime-main.js.map": "/nhl-playoffs/static/js/runtime-main.cad7ea4a.js.map",
-    "static/js/2.d8a97e47.chunk.js": "/nhl-playoffs/static/js/2.d8a97e47.chunk.js",
-    "static/js/2.d8a97e47.chunk.js.map": "/nhl-playoffs/static/js/2.d8a97e47.chunk.js.map",
+    "main.css": "/nhl-playoffs/static/css/main.6e69c373.chunk.css",
+    "main.js": "/nhl-playoffs/static/js/main.8308da29.chunk.js",
+    "main.js.map": "/nhl-playoffs/static/js/main.8308da29.chunk.js.map",
+    "runtime-main.js": "/nhl-playoffs/static/js/runtime-main.22cff230.js",
+    "runtime-main.js.map": "/nhl-playoffs/static/js/runtime-main.22cff230.js.map",
+    "static/js/2.25d9cda2.chunk.js": "/nhl-playoffs/static/js/2.25d9cda2.chunk.js",
+    "static/js/2.25d9cda2.chunk.js.map": "/nhl-playoffs/static/js/2.25d9cda2.chunk.js.map",
     "index.html": "/nhl-playoffs/index.html",
-    "static/css/main.bc2ff623.chunk.css.map": "/nhl-playoffs/static/css/main.bc2ff623.chunk.css.map",
-    "static/js/2.d8a97e47.chunk.js.LICENSE.txt": "/nhl-playoffs/static/js/2.d8a97e47.chunk.js.LICENSE.txt",
+    "static/css/main.6e69c373.chunk.css.map": "/nhl-playoffs/static/css/main.6e69c373.chunk.css.map",
+    "static/js/2.25d9cda2.chunk.js.LICENSE.txt": "/nhl-playoffs/static/js/2.25d9cda2.chunk.js.LICENSE.txt",
     "static/media/ana.0aead088.svg": "/nhl-playoffs/static/media/ana.0aead088.svg",
     "static/media/ari.713b6119.svg": "/nhl-playoffs/static/media/ari.713b6119.svg",
     "static/media/bos.ef3dd7ad.svg": "/nhl-playoffs/static/media/bos.ef3dd7ad.svg",
@@ -33,20 +33,20 @@
     "static/media/ott.f6a07552.svg": "/nhl-playoffs/static/media/ott.f6a07552.svg",
     "static/media/phi.0b79a18b.svg": "/nhl-playoffs/static/media/phi.0b79a18b.svg",
     "static/media/pit.8802b72d.svg": "/nhl-playoffs/static/media/pit.8802b72d.svg",
-    "static/media/sea.fab4c996.svg": "/nhl-playoffs/static/media/sea.fab4c996.svg",
+    "static/media/sea.d33fe630.svg": "/nhl-playoffs/static/media/sea.d33fe630.svg",
     "static/media/sjs.b7eceb5e.svg": "/nhl-playoffs/static/media/sjs.b7eceb5e.svg",
     "static/media/stl.cd319aac.svg": "/nhl-playoffs/static/media/stl.cd319aac.svg",
-    "static/media/tbl.ab7b8095.svg": "/nhl-playoffs/static/media/tbl.ab7b8095.svg",
-    "static/media/tor.5863a374.svg": "/nhl-playoffs/static/media/tor.5863a374.svg",
+    "static/media/tbl.f5dbeb65.svg": "/nhl-playoffs/static/media/tbl.f5dbeb65.svg",
+    "static/media/tor.51a6ec1e.svg": "/nhl-playoffs/static/media/tor.51a6ec1e.svg",
     "static/media/van.5cb65db3.svg": "/nhl-playoffs/static/media/van.5cb65db3.svg",
     "static/media/vgk.effc0633.svg": "/nhl-playoffs/static/media/vgk.effc0633.svg",
     "static/media/wpg.b99a3ffe.svg": "/nhl-playoffs/static/media/wpg.b99a3ffe.svg",
     "static/media/wsh.55c94e59.svg": "/nhl-playoffs/static/media/wsh.55c94e59.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cad7ea4a.js",
-    "static/js/2.d8a97e47.chunk.js",
-    "static/css/main.bc2ff623.chunk.css",
-    "static/js/main.933197ea.chunk.js"
+    "static/js/runtime-main.22cff230.js",
+    "static/js/2.25d9cda2.chunk.js",
+    "static/css/main.6e69c373.chunk.css",
+    "static/js/main.8308da29.chunk.js"
   ]
 }
