@@ -1,70 +1,82 @@
-import { useEffect, useState } from 'react';
-import Select from 'react-select';
-import Grid from './components/Grid';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Box, Title, Tabs } from '@mantine/core'
+import Playoffs from './logos/Playoffs/Playoffs'
+import Division from './components/Division'
+import Wildcard from './components/Wildcard'
+import Conference from './components/Conference'
+import League from './components/League'
 
-const API_BASE_URL = 'https://statsapi.web.nhl.com/api/v1';
+const API_URL = 'https://statsapi.web.nhl.com/api/v1'
 
-// https://statsapi.web.nhl.com/api/v1/divisions
-// https://statsapi.web.nhl.com/api/v1/teams/
-// https://statsapi.web.nhl.com/api/v1/standings/byDivision
+/**
+ * https://statsapi.web.nhl.com/api/v1/divisions
+ * https://statsapi.web.nhl.com/api/v1/standings/byDivision
+ * https://statsapi.web.nhl.com/api/v1/teams/
+ */
+
+const backgroundStyles = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  padding: '15rem 0 0 0',
+  zIndex: -1,
+  display: 'flex',
+  justifyContent: 'center',
+}
 
 const App = () => {
-  const [options, setOptions] = useState([]);
-  const [divisionId, setDivisionId] = useState(0);
-  const [teams, setTeams] = useState([]);
+  const [divisions, setDivsions] = useState([])
+  const [conferences, setConferences] = useState([])
+  const [standings, setStandings] = useState([])
 
   useEffect(() => {
-    const fetchDivisionData = async () => {
-      const res = await fetch(`${API_BASE_URL}/divisions`);
-      const data = await res.json();
+    axios.get(`${API_URL}/divisions`).then((res) => {
+      const divisions = res.data.divisions.map((division) => ({
+        value: division.id,
+        label: division.name,
+      }))
+      setDivsions(divisions)
+    })
 
-      const divisions = data.divisions.map((division) => {
-        const name = division.name.split(' ').pop();
-        return { value: division.id, label: name };
-      });
-      setOptions([...divisions, { value: 99, label: 'All' }]);
-    };
-    fetchDivisionData();
-  }, []);
+    axios.get(`${API_URL}/conferences`).then((res) => {
+      const conferences = res.data.conferences.map((conference) => ({
+        value: conference.id,
+        label: conference.name,
+      }))
+      setConferences(conferences)
+    })
 
-  useEffect(() => {
-    const fetchStandings = async () => {
-      const res = await fetch(`${API_BASE_URL}/standings/byDivision`);
-      const data = await res.json();
-      const standings =
-        divisionId === 99
-          ? data.records.map((record) => record)
-          : data.records.filter((record) => record.division.id === divisionId);
-      setTeams(
-        standings
-          .map((division) => division.teamRecords)
-          .flat()
-          .sort((a, b) => a.leagueRank - b.leagueRank)
-      );
-    };
-    divisionId && fetchStandings();
-  }, [divisionId]);
-
-  const onChange = (e) => {
-    setDivisionId(e.value);
-  };
+    axios.get(`${API_URL}/standings/byDivision`).then((res) => {
+      setStandings(res.data.records)
+    })
+  }, [])
 
   return (
-    <div className='App'>
-      <h1>Race to the Playoffs</h1>
-      <div className='division'>
-        <h4>Division</h4>
-        <Select
-          className='division-select'
-          classNamePrefix='select'
-          name='division'
-          options={options}
-          onChange={onChange}
-        />
-      </div>
-      <Grid teams={teams} />
-    </div>
-  );
-};
+    <>
+      <Box sx={backgroundStyles}>
+        <Playoffs />
+      </Box>
+      <Box sx={{ height: '8vh' }}>
+        <Title order={1}>NHL Standings</Title>
+      </Box>
+      <Tabs>
+        <Tabs.Tab label='Division'>
+          <Division options={divisions} standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='Wildcard'>
+          <Wildcard options={conferences} standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='Conference'>
+          <Conference options={conferences} standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='League'>
+          <League standings={standings} />
+        </Tabs.Tab>
+      </Tabs>
+    </>
+  )
+}
 
-export default App;
+export default App
