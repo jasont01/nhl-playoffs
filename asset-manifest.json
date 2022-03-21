@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nhl-standings/static/css/main.6e69c373.chunk.css",
-    "main.js": "/nhl-standings/static/js/main.8308da29.chunk.js",
-    "main.js.map": "/nhl-standings/static/js/main.8308da29.chunk.js.map",
+    "main.js": "/nhl-standings/static/js/main.bffdf8d2.chunk.js",
+    "main.js.map": "/nhl-standings/static/js/main.bffdf8d2.chunk.js.map",
     "runtime-main.js": "/nhl-standings/static/js/runtime-main.ad8df599.js",
     "runtime-main.js.map": "/nhl-standings/static/js/runtime-main.ad8df599.js.map",
     "static/js/2.25d9cda2.chunk.js": "/nhl-standings/static/js/2.25d9cda2.chunk.js",
@@ -47,6 +47,6 @@
     "static/js/runtime-main.ad8df599.js",
     "static/js/2.25d9cda2.chunk.js",
     "static/css/main.6e69c373.chunk.css",
-    "static/js/main.8308da29.chunk.js"
+    "static/js/main.bffdf8d2.chunk.js"
   ]
 }
