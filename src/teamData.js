@@ -278,7 +278,7 @@ export const teamData = [
   {
     id: 999,
     name: 'WildCard Separator',
-    logo: null,
+    logo: '',
     colors: {
       hex: ['#fff'],
       rgb: ['0, 0, 0'],
