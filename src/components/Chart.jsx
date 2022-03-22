@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +17,7 @@ const options = {
   indexAxis: 'y',
   elements: {
     bar: {
-      borderWidth: 1,
+      borderWidth: 2,
     },
   },
   responsive: true,
@@ -83,19 +84,22 @@ const plugins = [
 ]
 
 const Chart = ({ title, teams, legend = true }) => {
+  const teamColors = useMemo(
+    () =>
+      teams.map(
+        (entry) => teamData.find((team) => team.id === entry.team.id).colors.rgb
+      ),
+    [teams]
+  )
+
   const data = {
     labels: teams.map((entry) => entry.team.name),
     datasets: [
       {
         label: 'Current Points',
         data: teams.map((team) => team.points),
-        borderColor: '#000',
-        backgroundColor: teams.map(
-          (entry) =>
-            `rgb(${
-              teamData.find((team) => team.id === entry.team.id).colors.rgb[0]
-            })`
-        ),
+        borderColor: teamColors.map((color) => `rgb(${color[1]}`),
+        backgroundColor: teamColors.map((color) => `rgb(${color[0]}`),
         logos: teams.map(
           (entry) => teamData.find((t) => t.id === entry.team.id).logo
         ),
@@ -103,13 +107,8 @@ const Chart = ({ title, teams, legend = true }) => {
       {
         label: 'Possible Points',
         data: teams.map((team) => (82 - team.gamesPlayed) * 2),
-        borderColor: '#000',
-        backgroundColor: teams.map(
-          (entry) =>
-            `rgba(${
-              teamData.find((team) => team.id === entry.team.id).colors.rgb[0]
-            }, 0.2)`
-        ),
+        borderColor: teamColors.map((color) => `rgba(${color[1]}, 0.2`),
+        backgroundColor: teamColors.map((color) => `rgba(${color[0]}, 0.2`),
       },
     ],
   }
