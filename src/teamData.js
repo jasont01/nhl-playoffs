@@ -186,7 +186,7 @@ export const teamData = [
     id: 23,
     name: 'Vancouver Canucks',
     logo: logos.VAN,
-    colors: { hex: ['#00205b'], rgb: ['0, 32, 91'] },
+    colors: { hex: ['#00205b', '#00843D'], rgb: ['0, 32, 91', '10, 134, 61'] },
   },
   {
     id: 24,
