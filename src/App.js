@@ -6,8 +6,10 @@ import Division from './components/Division'
 import Wildcard from './components/Wildcard'
 import Conference from './components/Conference'
 import League from './components/League'
+import WinsAboveAvg from './components/WinsAboveAvg'
 
 const API_URL = 'https://statsapi.web.nhl.com/api/v1'
+const SEASON = '20212022'
 
 /**
  * https://statsapi.web.nhl.com/api/v1/divisions
@@ -30,6 +32,8 @@ const App = () => {
   const [divisions, setDivsions] = useState([])
   const [conferences, setConferences] = useState([])
   const [standings, setStandings] = useState([])
+  const [teams, setTeams] = useState([])
+  const [games, setGames] = useState([])
 
   useEffect(() => {
     axios.get(`${API_URL}/divisions`).then((res) => {
@@ -50,6 +54,14 @@ const App = () => {
 
     axios.get(`${API_URL}/standings/byDivision`).then((res) => {
       setStandings(res.data.records)
+    })
+
+    axios('https://statsapi.web.nhl.com/api/v1/teams').then((res) => {
+      setTeams(res.data.teams)
+    })
+
+    axios(`${API_URL}/schedule?season=${SEASON}&gameType=R`).then((res) => {
+      setGames(res.data.dates)
     })
   }, [])
 
@@ -73,6 +85,14 @@ const App = () => {
         </Tabs.Tab>
         <Tabs.Tab label='League'>
           <League standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='Wins above avg'>
+          <WinsAboveAvg
+            options={divisions}
+            dates={games}
+            teams={teams}
+            standings={standings}
+          />
         </Tabs.Tab>
       </Tabs>
     </>
