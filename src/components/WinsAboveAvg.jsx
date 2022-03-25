@@ -9,7 +9,7 @@ const WinsAboveAvg = ({ options, dates, teams }) => {
 
   useEffect(() => {
     const parsed = JSON.parse(JSON.stringify(teams))
-    console.log({ teams, dates })
+
     dates.forEach((date) =>
       date.games.forEach((game) => {
         if (game.status.statusCode !== '7') return
