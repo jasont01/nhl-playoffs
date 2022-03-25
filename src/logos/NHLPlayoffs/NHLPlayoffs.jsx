@@ -1,4 +1,4 @@
-import './Playoffs.css'
+import './NHLPlayoffs.css'
 
 const Playoffs = ({ height = '60vh' }) => {
   return (
