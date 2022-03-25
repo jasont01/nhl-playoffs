@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+.playoffs {
+  width: 90%;
+  height: 720px;
+  grid-template-columns: repeat(7, 1fr);
+  display: grid;
+  margin: auto;
+  justify-content: space-around;
+  grid-column-gap: 50px;
+}
+@media (max-width: 1024px) {
+  .playoffs {
+    height: 700px;
+  }
+}
+.playoffs ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Fjalla One', sans-serif;
+  padding-left: 0;
+}
+
+.playoffs ul:nth-child(1),
+.playoffs ul:nth-child(7) {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background-size: 2px 6vh, 2px 6vh, 2px 6vh, 2px 6vh;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: center 10%, center 37%, center 63%, center 90%;
+}
+.playoffs ul:nth-child(2),
+.playoffs ul:nth-child(6) {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background-size: 2px 18vh, 2px 18vh;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center 18%, center 81%;
+}
+.playoffs ul:nth-child(3),
+.playoffs ul:nth-child(5) {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  background-size: 2px 50%;
+  background-repeat: no-repeat;
+  background-position: center 20vh;
+}
+/* .playoffs ul:nth-child(4) {
+  background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/5/51/2019_Stanley_Cup_playoffs_logo.svg/220px-2019_Stanley_Cup_playoffs_logo.svg.png),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background-size: 70%, 2px 3vh;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center 50px, center center;
+} */
+.playoffs ul:nth-child(4) {
+  justify-content: center;
+}
+.playoffs ul:nth-child(4) li:nth-child(1) {
+  background-position: right center;
+}
+.playoffs ul:nth-child(4) li:nth-child(2) {
+  background-position: left center;
+}
+.playoffs ul:nth-child(1) li,
+.playoffs ul:nth-child(2) li,
+.playoffs ul:nth-child(3) li {
+  background-position: right center;
+}
+@media (max-width: 600px) {
+  .playoffs ul:nth-child(1) li,
+  .playoffs ul:nth-child(2) li,
+  .playoffs ul:nth-child(3) li {
+    background-position: center center;
+  }
+}
+.playoffs ul:nth-child(5) li,
+.playoffs ul:nth-child(6) li,
+.playoffs ul:nth-child(7) li {
+  background-position: left center;
+}
+@media (max-width: 600px) {
+  .playoffs ul:nth-child(5) li,
+  .playoffs ul:nth-child(6) li,
+  .playoffs ul:nth-child(7) li {
+    background-position: center center;
+  }
+}
+.playoffs ul li {
+  margin: 5px auto;
+  width: 100%;
+  font-size: 1.1em;
+  color: white;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  height: 55px;
+  line-height: 55px;
+  text-transform: uppercase;
+  background-color: #c7c7c7;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  text-shadow: -2px 0 0 black;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0);
+  transition: all 0.4s ease;
+  list-style: none;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  .playoffs ul li {
+    background-size: 100%;
+    font-size: 0;
+    height: 45px;
+    width: 45px;
+    border-radius: 25px;
+  }
+}
+.playoffs ul li:hover {
+  transform: scale(1.2);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.playoffs ul li.loose {
+  filter: grayscale(1);
+}
+.playoffs ul li.ahn {
+  background-color: #f47a38;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/ANA_light.svg?v=12.34);
+}
+.playoffs ul li.ari {
+  background-color: #8c2633;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/ARI_light.svg?v=12.34);
+}
+.playoffs ul li.bos {
+  background-color: #ffb81c;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?v=12.34);
+}
+.playoffs ul li.buf {
+  background-color: #002654;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/BUF_light.svg?v=12.34);
+}
+.playoffs ul li.cgy {
+  background-color: #c8102e;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/CGY_light.svg?v=12.34);
+}
+.playoffs ul li.car {
+  background-color: #cc0000;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/CAR_light.svg?v=12.34);
+}
+.playoffs ul li.chi {
+  background-color: #cf0a2c;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/CHI_light.svg?v=12.34);
+}
+.playoffs ul li.col {
+  background-color: #6f263d;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/COL_light.svg?v=12.34);
+}
+.playoffs ul li.cbj {
+  background-color: #002654;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/CBJ_light.svg?v=12.34);
+}
+.playoffs ul li.dal {
+  background-color: #006847;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/DAL_light.svg?v=12.34);
+}
+.playoffs ul li.det {
+  background-color: #ce1126;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/DET_light.svg?v=12.34);
+}
+.playoffs ul li.edm {
+  background-color: #041e42;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/EDM_light.svg?v=12.34);
+}
+.playoffs ul li.fla {
+  background-color: #041e42;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/FLA_light.svg?v=12.34);
+}
+.playoffs ul li.lak {
+  background-color: #041e42;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/LAK_light.svg?v=12.34);
+}
+.playoffs ul li.min {
+  background-color: #154734;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/MIN_light.svg?v=12.34);
+}
+.playoffs ul li.mtl {
+  background-color: #192168;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/MTL_light.svg?v=12.34);
+}
+.playoffs ul li.nsh {
+  background-color: #ffb81c;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/NSH_light.svg?v=12.34);
+}
+.playoffs ul li.njd {
+  background-color: #ce1126;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/NJD_light.svg?v=12.34);
+}
+.playoffs ul li.nyi {
+  background-color: #00539b;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/NYI_light.svg?v=12.34);
+}
+.playoffs ul li.nyr {
+  background-color: #0038a8;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/NYR_light.svg?v=12.34);
+}
+.playoffs ul li.ott {
+  background-color: #e31837;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/OTT_light.svg?v=12.34);
+}
+.playoffs ul li.phi {
+  background-color: #f74902;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/PHI_light.svg?v=12.34);
+}
+.playoffs ul li.pit {
+  background-color: #000000;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/PIT_light.svg?v=12.34);
+}
+.playoffs ul li.sjs {
+  background-color: #006d75;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/SJS_light.svg?v=12.34);
+}
+.playoffs ul li.stl {
+  background-color: #002f87;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/STL_light.svg?v=12.34);
+}
+.playoffs ul li.tbl {
+  background-color: #002868;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/TBL_light.svg?v=12.34);
+}
+.playoffs ul li.tor {
+  background-color: #003e7e;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/TOR_light.svg?v=12.34);
+}
+.playoffs ul li.van {
+  background-color: #001f5b;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/VAN_light.svg?v=12.34);
+}
+.playoffs ul li.vgk {
+  background-color: #b4975a;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/VGK_light.svg?v=12.34);
+}
+.playoffs ul li.wsh {
+  background-color: #041e42;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/WSH_light.svg?v=12.34);
+}
+.playoffs ul li.wpg {
+  background-color: #041e42;
+  background-image: url(https://assets.nhle.com/logos/nhl/svg/WPG_light.svg?v=12.34);
+}

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Box, Title, Tabs } from '@mantine/core'
-import Playoffs from './logos/Playoffs/Playoffs'
+import NHLPlayoffs from './logos/NHLPlayoffs/NHLPlayoffs'
 import Division from './components/Division'
 import Wildcard from './components/Wildcard'
 import Conference from './components/Conference'
 import League from './components/League'
 import WinsAboveAvg from './components/WinsAboveAvg'
+import Playoffs from './components/Playoffs'
+import NHL from './logos/NHL'
 
 const API_URL = 'https://statsapi.web.nhl.com/api/v1'
 const SEASON = '20212022'
@@ -52,10 +54,6 @@ const App = () => {
       setConferences(conferences)
     })
 
-    axios.get(`${API_URL}/standings/byDivision`).then((res) => {
-      setStandings(res.data.records)
-    })
-
     axios('https://statsapi.web.nhl.com/api/v1/teams').then((res) => {
       setTeams(res.data.teams)
     })
@@ -65,13 +63,30 @@ const App = () => {
     })
   }, [])
 
+  useEffect(() => {
+    axios.get(`${API_URL}/standings/byDivision`).then((res) => {
+      // merge additional team data
+      const data = res.data.records.map((division) => ({
+        ...division,
+        teamRecords: division.teamRecords.map((record) => {
+          const teamData = teams.find((team) => team.id === record.team.id)
+          return { ...record, team: teamData }
+        }),
+      }))
+      setStandings(data)
+    })
+  }, [teams])
+
   return (
     <>
-      <Box sx={backgroundStyles}>
-        <Playoffs />
-      </Box>
+      {/* <Box sx={backgroundStyles}>
+        <NHLPlayoffs />
+      </Box> */}
       <Box sx={{ height: '8vh' }}>
         <Title order={1}>NHL Standings</Title>
+        <Box sx={{ position: 'absolute', top: '1em', right: '1em' }}>
+          <NHL width={'5em'} />
+        </Box>
       </Box>
       <Tabs>
         <Tabs.Tab label='Division'>
@@ -93,6 +108,9 @@ const App = () => {
             teams={teams}
             standings={standings}
           />
+        </Tabs.Tab>
+        <Tabs.Tab label='Playoff Picture'>
+          <Playoffs standings={standings} />
         </Tabs.Tab>
       </Tabs>
     </>
