@@ -28,6 +28,13 @@ const options = {
     },
     tooltip: {
       callbacks: {
+        afterTitle: (context) => {
+          if (context[0].datasetIndex === 0) {
+            return context[0].dataset.eliminated[context[0].dataIndex]
+              ? '*Eliminated from Playoff Contention*'
+              : null
+          }
+        },
         label: (context) => {
           let label = context.dataset.label || ''
 
@@ -86,8 +93,10 @@ const plugins = [
 const Chart = ({ title, teams, legend = true }) => {
   const teamColors = useMemo(
     () =>
-      teams.map(
-        (entry) => teamData.find((team) => team.id === entry.team.id).colors.rgb
+      teams.map((entry) =>
+        entry.eliminated
+          ? ['64, 64, 64', '255,255,255']
+          : teamData.find((team) => team.id === entry.team.id).colors.rgb
       ),
     [teams]
   )
@@ -100,9 +109,11 @@ const Chart = ({ title, teams, legend = true }) => {
         data: teams.map((team) => team.points),
         borderColor: teamColors.map((color) => `rgb(${color[1]}`),
         backgroundColor: teamColors.map((color) => `rgb(${color[0]}`),
-        logos: teams.map(
-          (entry) => teamData.find((t) => t.id === entry.team.id).logo
-        ),
+        logos: teams.map((entry) => {
+          const dataEntry = teamData.find((t) => t.id === entry.team.id)
+          return entry.eliminated ? dataEntry.logoFaded : dataEntry.logo
+        }),
+        eliminated: teams.map((entry) => entry.eliminated),
       },
       {
         label: 'Possible Points',

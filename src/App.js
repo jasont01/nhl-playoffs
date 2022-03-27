@@ -34,6 +34,7 @@ const App = () => {
   const [divisions, setDivsions] = useState([])
   const [conferences, setConferences] = useState([])
   const [standings, setStandings] = useState([])
+  const [wildCard, setWildCard] = useState([])
   const [teams, setTeams] = useState([])
   const [games, setGames] = useState([])
 
@@ -61,21 +62,37 @@ const App = () => {
     axios(`${API_URL}/schedule?season=${SEASON}&gameType=R`).then((res) => {
       setGames(res.data.dates)
     })
+
+    axios(`${API_URL}/standings/wildCard`).then((res) => {
+      setWildCard(res.data.records)
+    })
   }, [])
 
   useEffect(() => {
+    if (teams.length === 0 || wildCard.length === 0) return
+    const isEliminated = (team, division) => {
+      const possiblePts = team.points + (82 - team.gamesPlayed) * 2
+      const wc2 = wildCard.find(
+        (d) => d.conference.id === division.conference.id
+      ).teamRecords[1]
+
+      return (
+        possiblePts < division.teamRecords[2].points && possiblePts < wc2.points
+      )
+    }
+
     axios.get(`${API_URL}/standings/byDivision`).then((res) => {
-      // merge additional team data
       const data = res.data.records.map((division) => ({
         ...division,
-        teamRecords: division.teamRecords.map((record) => {
-          const teamData = teams.find((team) => team.id === record.team.id)
-          return { ...record, team: teamData }
-        }),
+        teamRecords: division.teamRecords.map((record) => ({
+          ...record,
+          team: teams.find((t) => t.id === record.team.id), // merge additional team data
+          eliminated: isEliminated(record, division),
+        })),
       }))
       setStandings(data)
     })
-  }, [teams])
+  }, [teams, wildCard])
 
   return (
     <>
