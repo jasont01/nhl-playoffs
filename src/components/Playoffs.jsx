@@ -56,7 +56,7 @@ const Playoffs = ({ standings }) => {
   if (divisionWinners.length === 0) return null
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: '#305050', height: '87vh' }}>
       <Box
         sx={{
           display: 'flex',
