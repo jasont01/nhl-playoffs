@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Box, Title, Tabs } from '@mantine/core'
-import NHLPlayoffs from './logos/NHLPlayoffs/NHLPlayoffs'
 import Division from './components/Division'
 import Wildcard from './components/Wildcard'
 import Conference from './components/Conference'
@@ -21,7 +20,7 @@ const SEASON = '20212022'
 
 const backgroundStyles = {
   position: 'absolute',
-  top: 0,
+  top: '3em',
   left: 0,
   width: '100%',
   padding: '15rem 0 0 0',
@@ -96,14 +95,11 @@ const App = () => {
 
   return (
     <>
-      {/* <Box sx={backgroundStyles}>
-        <NHLPlayoffs />
-      </Box> */}
+      <Box sx={backgroundStyles}>
+        <NHL />
+      </Box>
       <Box sx={{ height: '8vh' }}>
         <Title order={1}>NHL Standings</Title>
-        <Box sx={{ position: 'absolute', top: '1em', right: '1em' }}>
-          <NHL width={'5em'} />
-        </Box>
       </Box>
       <Tabs>
         <Tabs.Tab label='Division'>
