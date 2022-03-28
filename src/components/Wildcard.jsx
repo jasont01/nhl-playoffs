@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { Box, Select } from '@mantine/core'
 import Chart from './Chart'
 
-//TODO: match chart ranges
-
 const Wildcard = ({ options, standings }) => {
   const [conference, setConference] = useState(null)
   const [data, setData] = useState([])
@@ -25,7 +23,9 @@ const Wildcard = ({ options, standings }) => {
 
     const wildCardTeams = divisions
       .map((division) =>
-        division.teamRecords.filter((team) => team.wildCardRank > 0)
+        division.teamRecords.filter(
+          (team) => team.wildCardRank > 0 && !team.eliminated
+        )
       )
       .flat()
       .sort((a, b) => a.wildCardRank - b.wildCardRank)
