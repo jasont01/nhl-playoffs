@@ -90,7 +90,7 @@ const plugins = [
   },
 ]
 
-const Chart = ({ title, teams, legend = true }) => {
+const Chart = ({ title, teams, legend = true, max = null, setMax }) => {
   const teamColors = useMemo(
     () =>
       teams.map((entry) =>
@@ -138,6 +138,13 @@ const Chart = ({ title, teams, legend = true }) => {
           title: {
             display: true,
             text: title,
+          },
+        },
+        scales: {
+          ...options.scales,
+          x: {
+            ...options.scales.x,
+            max,
           },
         },
       }}

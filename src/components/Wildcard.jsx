@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react'
 import { Box, Select } from '@mantine/core'
 import Chart from './Chart'
 
+//TODO: match chart ranges
+
 const Wildcard = ({ options, standings }) => {
   const [conference, setConference] = useState(null)
   const [data, setData] = useState([])
+  const [max, setMax] = useState(140)
 
   useEffect(() => {
+    if (!conference) return
+
     const divisions = standings.filter(
       (record) => record.conference.id === conference
     )
@@ -47,7 +52,7 @@ const Wildcard = ({ options, standings }) => {
           data={options}
         />
       </Box>
-      {conference &&
+      {data &&
         data.map((chart, idx) => (
           <Box
             key={idx}
@@ -57,7 +62,13 @@ const Wildcard = ({ options, standings }) => {
             mb={idx === 2 ? '2em' : '0'}
             sx={{ height: idx === 2 ? '36vh!important' : '16vh!important' }}
           >
-            <Chart title={chart.label} teams={chart.data} legend={idx === 2} />
+            <Chart
+              title={chart.label}
+              teams={chart.data}
+              legend={idx === 2}
+              max={max}
+              setMax={setMax}
+            />
           </Box>
         ))}
     </>
