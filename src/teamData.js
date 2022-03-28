@@ -1,310 +1,343 @@
 //import * as logos from './logos'
 import { logos } from './logos'
 
+const WHITE = { h: 0, s: 0, l: 100 }
+const BLACK = { h: 0, s: 0, l: 0 }
+
 export const teamData = [
   {
     id: 1,
     name: 'New Jersey Devils',
     logo: logos.NJD,
     logoFaded: logos.NJD_Faded,
-    colors: {
-      hex: ['#c8102e', '#010101', '#ffffff'],
-      rgb: ['200, 16, 46', '1, 1, 1', '255, 255, 255'],
-    },
+    colors: [
+      { h: 353, s: 85, l: 44 }, //Red #c8102e
+      BLACK,
+      WHITE,
+    ],
   },
   {
     id: 2,
     name: 'New York Islanders',
     logo: logos.NYI,
     logoFaded: logos.NYI_Faded,
-    colors: {
-      hex: ['#003087', '#fc4c02'],
-      rgb: ['0, 48, 135', '252, 76, 2'],
-    },
+    colors: [
+      { h: 208, s: 100, l: 30 }, //Blue #00539b
+      { h: 24, s: 90, l: 57 }, //Orange #f47d30
+    ],
   },
   {
     id: 3,
     name: 'New York Rangers',
     logo: logos.NYR,
     logoFaded: logos.NYR_Faded,
-    colors: {
-      hex: ['#0032a0', '#c8102e', '#ffffff'],
-      rgb: ['0, 50, 160', '200, 16, 46', '255, 255, 255'],
-    },
+    colors: [
+      { h: 220, s: 100, l: 33 }, //Blue #0038a8
+      { h: 353, s: 85, l: 44 }, //Red #ce1126
+      WHITE,
+    ],
   },
   {
     id: 4,
     name: 'Philadelphia Flyers',
     logo: logos.PHI,
     logoFaded: logos.PHI_Faded,
-    colors: { hex: ['#fa4616', '#010101'], rgb: ['250, 70, 22', '1, 1, 1'] },
+    colors: [
+      { h: 17, s: 98, l: 49 }, //Orange #f74902
+      BLACK,
+      WHITE,
+    ],
   },
   {
     id: 5,
     name: 'Pittsburgh Penguins',
     logo: logos.PIT,
     logoFaded: logos.PIT_Faded,
-    colors: { hex: ['#010101', '#ffb81c'], rgb: ['1, 1, 1', '255, 184, 28'] },
+    colors: [
+      BLACK,
+      { h: 49, s: 38, l: 69 }, //Gold #cfc493
+      { h: 42, s: 97, l: 53 }, //Yellow #fcb514
+      WHITE,
+    ],
   },
   {
     id: 6,
     name: 'Boston Bruins',
     logo: logos.BOS,
     logoFaded: logos.BOS_Faded,
-    colors: {
-      hex: ['#ffb81c', '#000000'],
-      rgb: ['252, 181, 20', '17, 17, 17'],
-    },
+    colors: [
+      { h: 41, s: 100, l: 55 }, //Gold #ffb81c
+      BLACK,
+    ],
   },
   {
     id: 7,
     name: 'Buffalo Sabres',
     logo: logos.BUF,
     logoFaded: logos.BUF_Faded,
-    colors: {
-      hex: ['#003087', '#ffb81c'],
-      rgb: ['0, 48, 135', '255, 184, 28'],
-    },
+    colors: [
+      { h: 213, s: 100, l: 16 }, //Blue #002654
+      { h: 42, s: 97, l: 53 }, //Yellow #fcb514
+    ],
   },
   {
     id: 8,
     name: 'Montreal Canadiens',
     logo: logos.MTL,
     logoFaded: logos.MTL_Faded,
-    colors: {
-      hex: ['#a6192e', '#001e62'],
-      rgb: ['166, 25, 46', '0, 30, 98'],
-    },
+    colors: [
+      { h: 354, s: 71, l: 40 }, //Red #af1e2d
+      { h: 234, s: 61, l: 25 }, //Blue #192168
+    ],
   },
   {
     id: 9,
     name: 'Ottawa Senators',
     logo: logos.OTT,
     logoFaded: logos.OTT_Faded,
-    colors: {
-      hex: ['#c8102e', '#b9975b', '#010101'],
-      rgb: ['200, 16, 46', '185, 151, 91', '1, 1, 1'],
-    },
+    colors: [
+      { h: 353, s: 72, l: 45 }, //Red #c52032
+      { h: 40, s: 63, l: 47 }, //Gold #c2912c
+      BLACK,
+    ],
   },
   {
     id: 10,
     name: 'Toronto Maple Leafs',
     logo: logos.TOR,
     logoFaded: logos.TOR_Faded,
-    colors: {
-      hex: ['#00205b', '#ffffff'],
-      rgb: ['0, 32, 91', '255, 255, 255'],
-    },
+    colors: [
+      { h: 219, s: 100, l: 18 }, //Blue #00205b
+      WHITE,
+    ],
   },
   {
     id: 12,
     name: 'Carolina Hurricanes',
     logo: logos.CAR,
     logoFaded: logos.CAR_Faded,
-    colors: {
-      hex: ['#cc0000', '#000000', '#a2aaad', '#76232f'],
-      rgb: ['204, 0, 0', '0, 0, 0', '162, 170, 173', '118, 35, 47'],
-    },
+    colors: [
+      { h: 0, s: 100, l: 40 }, //Red #c00
+      BLACK,
+    ],
   },
   {
     id: 13,
     name: 'Florida Panthers',
     logo: logos.FLA,
     logoFaded: logos.FLA_Faded,
-    colors: {
-      hex: ['#c6102e', '#041e42', '#b9975b'],
-      rgb: ['198, 16, 46', '4, 30, 66', '185, 151, 91'],
-    },
+    colors: [
+      { h: 215, s: 89, l: 14 }, //Blue #041e42
+      { h: 350, s: 85, l: 42 }, //Red #c8102e
+      { h: 38, s: 40, l: 54 }, //Tan #b9975b
+    ],
   },
   {
     id: 14,
     name: 'Tampa Bay Lightning',
     logo: logos.TBL,
     logoFaded: logos.TBL_Faded,
-    colors: {
-      hex: ['#002868', '#ffffff'],
-      rgb: ['0, 40, 104', '255, 255, 255'],
-    },
+    colors: [
+      { h: 217, s: 100, l: 20 }, //Blue #002868
+      WHITE,
+    ],
   },
   {
     id: 15,
     name: 'Washington Capitals',
     logo: logos.WSH,
     logoFaded: logos.WSH_Faded,
-    colors: {
-      hex: ['#041e42', '#c8102e'],
-      rgb: ['4, 30, 66', '200, 16, 46'],
-    },
+    colors: [
+      { h: 215, s: 89, l: 14 }, //Blue #041e42
+      { h: 350, s: 85, l: 42 }, //Red #c8102e
+      WHITE,
+    ],
   },
   {
     id: 16,
     name: 'Chicago Blackhawks',
     logo: logos.CHI,
     logoFaded: logos.CHI_Faded,
-    colors: {
-      hex: ['#cf0a2c', '#ff671b', '#00833e'],
-      rgb: ['207, 10, 44', '255, 103, 27', '0, 131, 62'],
-    },
+    colors: [
+      { h: 350, s: 91, l: 43 }, //Red #cf0a2c
+      BLACK,
+    ],
   },
   {
     id: 17,
     name: 'Detroit Red Wings',
     logo: logos.DET,
     logoFaded: logos.DET_Faded,
-    colors: {
-      hex: ['#ce1126', '#ffffff'],
-      rgb: ['206, 17, 38', '255, 255, 255'],
-    },
+    colors: [
+      { h: 353, s: 85, l: 44 }, //Red #ce1126
+      WHITE,
+    ],
   },
   {
     id: 18,
     name: 'Nashville Predators',
     logo: logos.NSH,
     logoFaded: logos.NSH_Faded,
-    colors: {
-      hex: ['#ffb81c', '#041e42'],
-      rgb: ['255, 184, 28', '4, 30, 66'],
-    },
+    colors: [
+      { h: 41, s: 100, l: 55 }, //Gold #ffb81c
+      { h: 215, s: 89, l: 14 }, //Blue #041e42
+    ],
   },
   {
     id: 19,
     name: 'St. Louis Blues',
     logo: logos.STL,
     logoFaded: logos.STL_Faded,
-    colors: {
-      hex: ['#002f87', '#fcb514'],
-      rgb: ['0, 47, 135', '252, 181, 20'],
-    },
+    colors: [
+      { h: 219, s: 100, l: 26 }, //Blue #002f87
+      { h: 42, s: 97, l: 53 }, //Yellow #fcb514
+    ],
   },
   {
     id: 20,
     name: 'Calgary Flames',
     logo: logos.CGY,
     logoFaded: logos.CGY_Faded,
-    colors: {
-      hex: ['#c8102e', '#f1be48'],
-      rgb: ['200, 16, 46', '241, 190, 72'],
-    },
+    colors: [
+      { h: 350, s: 85, l: 42 }, //Red #c8102e
+      { h: 42, s: 86, l: 61 }, //Gold #f1be48
+    ],
   },
   {
     id: 21,
     name: 'Colorado Avalanche',
     logo: logos.COL,
     logoFaded: logos.COL_Faded,
-    colors: {
-      hex: ['#6f263d', '#236192', '#a2aaad'],
-      rgb: ['111, 38, 61', '35, 97, 146', '162, 170, 173'],
-    },
+    colors: [
+      { h: 341, s: 49, l: 29 }, //Burgundy #6f263d
+      { h: 206, s: 61, l: 35 }, //Blue #236192
+    ],
   },
   {
     id: 22,
     name: 'Edmonton Oilers',
     logo: logos.EDM,
     logoFaded: logos.EDM_Faded,
-    colors: { hex: ['#041e42', '#ff4c00'], rgb: ['4, 30, 66', '255, 76, 0'] },
+    colors: [
+      { h: 215, s: 89, l: 14 }, //Blue #041e42
+      { h: 18, s: 100, l: 50 }, //Orange #ff4c00
+    ],
   },
   {
     id: 23,
     name: 'Vancouver Canucks',
     logo: logos.VAN,
-    colors: { hex: ['#00205b', '#00843D'], rgb: ['0, 32, 91', '10, 134, 61'] },
+    colors: [
+      { h: 219, s: 100, l: 18 }, //Blue #00205b
+      { h: 148, s: 100, l: 26 }, //Green #00843d
+    ],
   },
   {
     id: 24,
     name: 'Anaheim Ducks',
     logo: logos.ANA,
     logoFaded: logos.ANA_Faded,
-    colors: {
-      hex: ['#f47a38', '#b9975b', '#c1c6c8', '#000000'],
-      rgb: ['244, 122, 56', '185, 151, 91', '193, 198, 200', '0, 0, 0'],
-    },
+    colors: [
+      { h: 21, s: 90, l: 59 }, //Orange #f47a38
+      { h: 38, s: 40, l: 54 }, //Gold #b9975b
+      BLACK,
+    ],
   },
   {
     id: 25,
     name: 'Dallas Stars',
     logo: logos.DAL,
     logoFaded: logos.DAL_Faded,
-    colors: {
-      hex: ['#006847', '#8f8f8c', '#111111'],
-      rgb: ['0, 104, 71', '143, 143, 140', '17, 17, 17'],
-    },
+    colors: [
+      { h: 161, s: 100, l: 20 }, //Green #006847
+      BLACK,
+    ],
   },
   {
     id: 26,
     name: 'Los Angeles Kings',
     logo: logos.LAK,
     logoFaded: logos.LAK_Faded,
-    colors: {
-      hex: ['#111111', '#a2aaad'],
-      rgb: ['17, 17, 17', '162, 170, 173'],
-    },
+    colors: [
+      BLACK,
+      { h: 196, s: 6, l: 66 }, //Silver #a2aaad
+    ],
   },
   {
     id: 28,
     name: 'San Jose Sharks',
     logo: logos.SJS,
     logoFaded: logos.SJS_Faded,
-    colors: {
-      hex: ['#006d75', '#ea7200', '#000000'],
-      rgb: ['0, 109, 117', '234, 114, 0', '0, 0, 0'],
-    },
+    colors: [
+      { h: 188, s: 100, l: 22 }, //Teal #006272
+      { h: 29, s: 100, l: 46 }, //Orange #ea7200
+      BLACK,
+    ],
   },
   {
     id: 29,
     name: 'Columbus Blue Jackets',
     logo: logos.CBJ,
     logoFaded: logos.CBJ_Faded,
-    colors: {
-      hex: ['#002654', '#ce1126', '#a4a9ad'],
-      rgb: ['0, 38, 84', '206, 17, 38', '164, 169, 173'],
-    },
+    colors: [
+      { h: 213, s: 100, l: 16 }, //Blue #002654
+      { h: 350, s: 85, l: 42 }, //Red #c8102e
+    ],
   },
   {
     id: 30,
     name: 'Minnesota Wild',
     logo: logos.MIN,
     logoFaded: logos.MIN_Faded,
-    colors: {
-      hex: ['#154734', '#a6192e', '#eaaa00', '#ddcba4'],
-      rgb: ['21, 71, 52', '166, 25, 46', '234, 170, 0', '221, 203, 164'],
-    },
+    colors: [
+      { h: 157, s: 54, l: 18 }, //Green #154734
+      { h: 41, s: 46, l: 75 }, //Wheat #ddcba4
+      { h: 351, s: 74, l: 37 }, //Red #a6192e
+    ],
   },
   {
     id: 52,
     name: 'Winnipeg Jets',
     logo: logos.WPG,
     logoFaded: logos.WPG_Faded,
-    colors: { hex: ['#041e42', '#004c97'], rgb: ['4, 30, 66', '0, 76, 151'] },
+    colors: [
+      { h: 215, s: 89, l: 14 }, //Navy #041e42
+      { h: 210, s: 100, l: 30 }, //Blue #004c97
+      WHITE,
+    ],
   },
   {
     id: 53,
     name: 'Arizona Coyotes',
     logo: logos.ARI,
     logoFaded: logos.ARI_Faded,
-    colors: {
-      hex: ['#8c2633', '#e2d6b5'],
-      rgb: ['140, 38, 51', '226, 214, 181'],
-    },
+    colors: [
+      { h: 352, s: 57, l: 35 }, //Red #8c2633
+      { h: 44, s: 44, l: 80 }, //Sand #e2d6b5
+      BLACK,
+    ],
   },
   {
     id: 54,
     name: 'Vegas Golden Knights',
     logo: logos.VGK,
     logoFaded: logos.VGK_Faded,
-    colors: {
-      hex: ['#b4975a', '#333f42', '#000000'],
-      rgb: ['180, 151, 90', '51, 63, 66', '0, 0, 0'],
-    },
+    colors: [
+      { h: 192, s: 13, l: 23 }, //Gray #333f42
+      { h: 41, s: 38, l: 53 }, //Gold #b4975a
+      BLACK,
+    ],
   },
   {
     id: 55,
     name: 'Seattle Kraken',
     logo: logos.SEA,
     logoFaded: logos.SEA_Faded,
-    colors: {
-      hex: ['#001628', '#99d9d9', '#355464', '#68a2b9'],
-      rgb: ['0, 22, 40', '153, 217, 217', '53, 84, 100', '104, 162, 185'],
-    },
+    colors: [
+      { h: 207, s: 100, l: 8 }, //Dark Blue #001628
+      { h: 200, s: 31, l: 30 }, //Blue #355464
+      { h: 180, s: 46, l: 73 }, //Ice Blue #99d9d9
+    ],
   },
   {
     id: 999,

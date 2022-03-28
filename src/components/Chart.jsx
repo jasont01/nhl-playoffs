@@ -95,8 +95,12 @@ const Chart = ({ title, teams, legend = true }) => {
     () =>
       teams.map((entry) =>
         entry.eliminated
-          ? ['64, 64, 64', '255,255,255']
-          : teamData.find((team) => team.id === entry.team.id).colors.rgb
+          ? teamData
+              .find((t) => t.id === entry.team.id)
+              .colors.map((c) => `${c.h}, 15%, ${c.l}%`)
+          : teamData
+              .find((t) => t.id === entry.team.id)
+              .colors.map((c) => `${c.h}, ${c.s}%, ${c.l}%`)
       ),
     [teams]
   )
@@ -107,8 +111,8 @@ const Chart = ({ title, teams, legend = true }) => {
       {
         label: 'Current Points',
         data: teams.map((team) => team.points),
-        borderColor: teamColors.map((color) => `rgb(${color[1]}`),
-        backgroundColor: teamColors.map((color) => `rgb(${color[0]}`),
+        borderColor: teamColors.map((color) => `hsl(${color[1]})`),
+        backgroundColor: teamColors.map((color) => `hsl(${color[0]})`),
         logos: teams.map((entry) => {
           const dataEntry = teamData.find((t) => t.id === entry.team.id)
           return entry.eliminated ? dataEntry.logoFaded : dataEntry.logo
@@ -118,8 +122,8 @@ const Chart = ({ title, teams, legend = true }) => {
       {
         label: 'Possible Points',
         data: teams.map((team) => (82 - team.gamesPlayed) * 2),
-        borderColor: teamColors.map((color) => `rgba(${color[1]}, 0.2`),
-        backgroundColor: teamColors.map((color) => `rgba(${color[0]}, 0.2`),
+        borderColor: teamColors.map((color) => `hsla(${color[1]}, 0.2)`),
+        backgroundColor: teamColors.map((color) => `hsla(${color[0]}, 0.2)`),
       },
     ],
   }
