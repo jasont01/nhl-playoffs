@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 )
 
-const totalDuration = 10000
+const totalDuration = 6000
 const delayBetweenPoints = totalDuration / 82
 const previousY = (ctx) =>
   ctx.index === 0
@@ -77,15 +77,12 @@ const LineChart = ({ title, teams, legend = true }) => {
   const data = {
     labels: [...Array(82 + 1).keys()].slice(1),
     datasets: teams.map((team) => {
+      const teamColors = teamData.find((t) => t.id === team.id).colors
       return {
         label: team.name,
         data: team.data,
-        borderColor: `rgb(${
-          teamData.find((entry) => entry.id === team.id).colors.rgb[0]
-        })`,
-        backgroundColor: `rgb(${
-          teamData.find((entry) => entry.id === team.id).colors.rgb[1]
-        })`,
+        borderColor: `hsl(${teamColors[0].h}, ${teamColors[0].s}%, ${teamColors[0].l}%)`,
+        backgroundColor: `hsl(${teamColors[1].h}, ${teamColors[1].s}%, ${teamColors[1].l}%)`,
       }
     }),
   }
