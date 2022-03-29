@@ -7,6 +7,8 @@ const Wildcard = ({ options, standings }) => {
   const [data, setData] = useState([])
   const [max, setMax] = useState(140)
   const [showEliminated, setShowEliminated] = useState(false)
+  const [eliminatedSwitchVisiable, setEliminatedSwitchVisiable] =
+    useState(false)
 
   useEffect(() => {
     if (!conference) return
@@ -18,19 +20,24 @@ const Wildcard = ({ options, standings }) => {
     const divisionLeaders = divisions.map((division) => {
       return {
         label: division.division.name,
-        data: division.teamRecords.filter((team) => team.divisionRank <= 3),
+        teams: division.teamRecords.filter((team) => team.divisionRank <= 3),
       }
     })
 
     const wildCardTeams = divisions
       .map((division) =>
-        division.teamRecords.filter(
-          (team) =>
-            team.wildCardRank > 0 && (!team.eliminated || showEliminated)
-        )
+        division.teamRecords.filter((team) => team.wildCardRank > 0)
       )
       .flat()
       .sort((a, b) => a.wildCardRank - b.wildCardRank)
+
+    if (wildCardTeams.some((team) => team.eliminated)) {
+      setEliminatedSwitchVisiable(true)
+    }
+
+    const wildCardFiltered = wildCardTeams.filter((team) => {
+      return !team.eliminated || showEliminated
+    })
 
     const wildCardSeparator = {
       team: {
@@ -41,11 +48,18 @@ const Wildcard = ({ options, standings }) => {
       gamesPlayed: 82,
     }
 
-    if (wildCardTeams.length > 2) {
-      wildCardTeams.splice(2, 0, wildCardSeparator)
+    if (wildCardFiltered.length > 2) {
+      wildCardFiltered.splice(2, 0, wildCardSeparator)
     }
 
-    setData([...divisionLeaders, { label: 'Wild Card', data: wildCardTeams }])
+    setData([
+      ...divisionLeaders,
+      { label: 'Wild Card', teams: wildCardFiltered },
+    ])
+
+    return () => {
+      setEliminatedSwitchVisiable(false)
+    }
   }, [conference, standings, showEliminated])
 
   return (
@@ -68,14 +82,14 @@ const Wildcard = ({ options, standings }) => {
         >
           <Chart
             title={chart.label}
-            teams={chart.data}
+            teams={chart.teams}
             legend={idx === 2}
             max={max}
             setMax={setMax}
           />
         </Box>
       ))}
-      {conference && (
+      {eliminatedSwitchVisiable && (
         <Box mx='2em'>
           <Switch
             label='eliminated teams'
