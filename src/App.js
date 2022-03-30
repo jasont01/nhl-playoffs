@@ -69,16 +69,35 @@ const App = () => {
 
   useEffect(() => {
     if (teams.length === 0 || wildCard.length === 0) return
-    const isEliminated = (team, division) => {
-      const possiblePts = team.points + (82 - team.gamesPlayed) * 2
+
+    const divisionEliminated = (team, division) => {
+      const gamesRemaining = 82 - team.gamesPlayed
+      const possiblePts = team.points + gamesRemaining * 2
+      const division3rd = division.teamRecords[2]
+
+      if (possiblePts === division3rd.points) {
+        const maxRow = gamesRemaining + team.row
+        return maxRow < division3rd.row
+      }
+      return possiblePts < division.teamRecords[2].points
+    }
+
+    const wildCardEliminated = (team, division) => {
+      const gamesRemaining = 82 - team.gamesPlayed
+      const possiblePts = team.points + gamesRemaining * 2
       const wc2 = wildCard.find(
         (d) => d.conference.id === division.conference.id
       ).teamRecords[1]
 
-      return (
-        possiblePts < division.teamRecords[2].points && possiblePts < wc2.points
-      )
+      if (possiblePts === wc2.points) {
+        const maxRow = gamesRemaining + team.row
+        return maxRow < wc2.row
+      }
+      return possiblePts < wc2.points
     }
+
+    const isEliminated = (team, division) =>
+      divisionEliminated(team, division) && wildCardEliminated(team, division)
 
     axios.get(`${API_URL}/standings/byDivision`).then((res) => {
       const data = res.data.records.map((division) => ({
