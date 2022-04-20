@@ -76,8 +76,12 @@ const App = () => {
       const division3rd = division.teamRecords[2]
 
       if (possiblePts === division3rd.points) {
-        const maxRow = gamesRemaining + team.row
-        return maxRow < division3rd.row
+        const maxRegulationWins = gamesRemaining + team.regulationWins
+        if (maxRegulationWins === division3rd.wins) {
+          const maxRow = gamesRemaining + team.row
+          return maxRow < division3rd.row
+        }
+        return maxRegulationWins < division3rd.wins
       }
       return possiblePts < division.teamRecords[2].points
     }
@@ -90,8 +94,12 @@ const App = () => {
       ).teamRecords[1]
 
       if (possiblePts === wc2.points) {
-        const maxRow = gamesRemaining + team.row
-        return maxRow < wc2.row
+        const maxRegulationWins = gamesRemaining + team.regulationWins
+        if (maxRegulationWins === wc2.regulationWins) {
+          const maxRow = gamesRemaining + team.row
+          return maxRow < wc2.row
+        }
+        return maxRegulationWins < wc2.regulationWins
       }
       return possiblePts < wc2.points
     }
