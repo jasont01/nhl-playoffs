@@ -53,6 +53,7 @@ const options = {
       },
     },
   },
+  //maxBarThickness: 50,
   scales: {
     x: {
       stacked: true,
@@ -90,7 +91,14 @@ const plugins = [
   },
 ]
 
-const Chart = ({ title, teams, legend = true, max = null, setMax }) => {
+const Chart = ({
+  title,
+  teams,
+  legend = true,
+  max = null,
+  setMax,
+  aspectRatio = true,
+}) => {
   const teamColors = useMemo(
     () =>
       teams.map((entry) =>
@@ -132,6 +140,7 @@ const Chart = ({ title, teams, legend = true, max = null, setMax }) => {
     <Bar
       options={{
         ...options,
+        maintainAspectRatio: aspectRatio,
         plugins: {
           ...options.plugins,
           legend: legend ? options.plugins.legend : false,

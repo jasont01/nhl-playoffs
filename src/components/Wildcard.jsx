@@ -86,6 +86,7 @@ const Wildcard = ({ options, standings }) => {
             legend={idx === 2}
             max={max}
             setMax={setMax}
+            aspectRatio={false}
           />
         </Box>
       ))}
