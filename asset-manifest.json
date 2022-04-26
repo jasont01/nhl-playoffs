@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nhl-standings/static/css/main.6b826c03.css",
-    "main.js": "/nhl-standings/static/js/main.4b0a6b8c.js",
+    "main.css": "/nhl-standings/static/css/main.72da8fea.css",
+    "main.js": "/nhl-standings/static/js/main.38b7f7ff.js",
     "static/media/lak-faded.svg": "/nhl-standings/static/media/lak-faded.6f9c31bc2cbefe5b261fe051de71a36c.svg",
     "static/media/lak.svg": "/nhl-standings/static/media/lak.31d4de8a2492a1762c7d0543b4d888da.svg",
     "static/media/ott-faded.svg": "/nhl-standings/static/media/ott-faded.ddecdeb22db46893bd43c8b722192654.svg",
@@ -67,11 +67,11 @@
     "static/media/tbl-faded.svg": "/nhl-standings/static/media/tbl-faded.74edb02824ae07d0a74d8ad828cd1000.svg",
     "static/media/tbl.svg": "/nhl-standings/static/media/tbl.f5dbeb6504a5d9b3bb85bcaa8bc4e8d7.svg",
     "index.html": "/nhl-standings/index.html",
-    "main.6b826c03.css.map": "/nhl-standings/static/css/main.6b826c03.css.map",
-    "main.4b0a6b8c.js.map": "/nhl-standings/static/js/main.4b0a6b8c.js.map"
+    "main.72da8fea.css.map": "/nhl-standings/static/css/main.72da8fea.css.map",
+    "main.38b7f7ff.js.map": "/nhl-standings/static/js/main.38b7f7ff.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b826c03.css",
-    "static/js/main.4b0a6b8c.js"
+    "static/css/main.72da8fea.css",
+    "static/js/main.38b7f7ff.js"
   ]
 }
