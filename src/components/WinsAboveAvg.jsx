@@ -45,7 +45,7 @@ const WinsAboveAvg = ({ options, dates, teams }) => {
         />
       </Box>
       {selected && (
-        <Box className='chart' mx='2em'>
+        <Box className='chart' mx='2em' sx={{ height: '69vh' }}>
           <LineChart
             teams={selected}
             title={`${

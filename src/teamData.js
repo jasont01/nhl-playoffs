@@ -339,10 +339,4 @@ export const teamData = [
       { h: 180, s: 46, l: 73 }, //Ice Blue #99d9d9
     ],
   },
-  {
-    id: 999,
-    name: 'WildCard Separator',
-    logo: '',
-    colors: [BLACK],
-  },
 ]

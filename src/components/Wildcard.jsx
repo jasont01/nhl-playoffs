@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Box, Select, Switch } from '@mantine/core'
 import Chart from './Chart'
+import { chartRange } from '../utils/chartRange'
 
 const Wildcard = ({ options, standings }) => {
   const [conference, setConference] = useState(null)
   const [data, setData] = useState([])
-  const [max, setMax] = useState(140)
+  const [range, setRange] = useState({ min: 0, max: 180 })
   const [showEliminated, setShowEliminated] = useState(false)
   const [eliminatedSwitchVisiable, setEliminatedSwitchVisiable] =
     useState(false)
@@ -26,41 +27,51 @@ const Wildcard = ({ options, standings }) => {
 
     const wildCardTeams = divisions
       .map((division) =>
-        division.teamRecords.filter((team) => team.wildCardRank > 0)
+        division.teamRecords.filter(
+          (team) => team.wildCardRank === '1' || team.wildCardRank === '2'
+        )
       )
       .flat()
       .sort((a, b) => a.wildCardRank - b.wildCardRank)
 
-    if (wildCardTeams.some((team) => team.eliminated)) {
+    const noPlayoffTeams = divisions
+      .map((division) =>
+        division.teamRecords.filter((team) => team.wildCardRank > 2)
+      )
+      .flat()
+      .sort((a, b) => a.wildCardRank - b.wildCardRank)
+
+    if (noPlayoffTeams.some((team) => team.eliminated)) {
       setEliminatedSwitchVisiable(true)
     }
 
-    const wildCardFiltered = wildCardTeams.filter((team) => {
+    const noPlayoffsFiltered = noPlayoffTeams.filter((team) => {
       return !team.eliminated || showEliminated
     })
 
-    const wildCardSeparator = {
-      team: {
-        id: 999,
-        name: '----------------------------',
-      },
-      points: 0,
-      gamesPlayed: 82,
+    if (noPlayoffsFiltered.length > 0) {
+      setData([
+        ...divisionLeaders,
+        { label: 'Wild Card', teams: wildCardTeams },
+        { label: 'No Playoffs', teams: noPlayoffsFiltered },
+      ])
+    } else {
+      setData([
+        ...divisionLeaders,
+        { label: 'Wild Card', teams: wildCardTeams },
+      ])
     }
-
-    if (wildCardFiltered.length > 2) {
-      wildCardFiltered.splice(2, 0, wildCardSeparator)
-    }
-
-    setData([
-      ...divisionLeaders,
-      { label: 'Wild Card', teams: wildCardFiltered },
-    ])
 
     return () => {
       setEliminatedSwitchVisiable(false)
     }
   }, [conference, standings, showEliminated])
+
+  useEffect(() => {
+    if (!data.length) return
+
+    setRange(chartRange(data.flatMap((entry) => entry.teams)))
+  }, [data])
 
   return (
     <>
@@ -71,29 +82,42 @@ const Wildcard = ({ options, standings }) => {
           data={options}
         />
       </Box>
-      {data.map((chart, idx) => (
-        <Box
-          key={idx}
-          className='chart'
-          my='0'
-          mx='2em'
-          mb={idx === 2 ? '2em' : '0'}
-          sx={{ height: idx === 2 ? '36vh!important' : '16vh!important' }}
-        >
-          <Chart
-            title={chart.label}
-            teams={chart.teams}
-            legend={idx === 2}
-            max={max}
-            setMax={setMax}
-            aspectRatio={false}
-          />
-        </Box>
-      ))}
+      <Box mb='1em' mx='1em'>
+        {data.map((chart, idx) => (
+          <Box
+            key={idx}
+            className='chart'
+            my='0'
+            sx={
+              idx === data.length - 1
+                ? {
+                    height: `${
+                      chart.teams.length * 7 +
+                      (3 - chart.teams.length) * 2 +
+                      3.5
+                    }vh`,
+                  }
+                : {
+                    height: `${
+                      chart.teams.length * 7 + (3 - chart.teams.length) * 2
+                    }vh`,
+                  }
+            }
+          >
+            <Chart
+              title={chart.label}
+              teams={chart.teams}
+              legend={idx === data.length - 1}
+              //legend={false}
+              range={range}
+            />
+          </Box>
+        ))}
+      </Box>
       {eliminatedSwitchVisiable && (
-        <Box mx='2em'>
+        <Box mx='2em' mb='1em'>
           <Switch
-            label='eliminated teams'
+            label='show eliminated teams'
             checked={showEliminated}
             onChange={(e) => setShowEliminated(e.currentTarget.checked)}
           />

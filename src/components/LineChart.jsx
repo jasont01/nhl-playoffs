@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 )
 
-const totalDuration = 6000
+const totalDuration = 3000
 const delayBetweenPoints = totalDuration / 82
 const previousY = (ctx) =>
   ctx.index === 0
@@ -61,6 +61,7 @@ const animation = {
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   animation,
   plugins: {
     legend: {
@@ -73,6 +74,8 @@ const options = {
   },
 }
 
+//TODO: Add logos to chart
+
 const LineChart = ({ title, teams, legend = true }) => {
   const data = {
     labels: [...Array(82 + 1).keys()].slice(1),
@@ -83,6 +86,7 @@ const LineChart = ({ title, teams, legend = true }) => {
         data: team.data,
         borderColor: `hsl(${teamColors[0].h}, ${teamColors[0].s}%, ${teamColors[0].l}%)`,
         backgroundColor: `hsl(${teamColors[1].h}, ${teamColors[1].s}%, ${teamColors[1].l}%)`,
+        pointRadius: 0, // hide points
       }
     }),
   }

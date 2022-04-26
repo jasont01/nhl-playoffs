@@ -53,7 +53,6 @@ const options = {
       },
     },
   },
-  //maxBarThickness: 50,
   scales: {
     x: {
       stacked: true,
@@ -91,14 +90,7 @@ const plugins = [
   },
 ]
 
-const Chart = ({
-  title,
-  teams,
-  legend = true,
-  max = null,
-  setMax,
-  aspectRatio = true,
-}) => {
+const Chart = ({ title, teams, legend = true, range }) => {
   const teamColors = useMemo(
     () =>
       teams.map((entry) =>
@@ -114,7 +106,11 @@ const Chart = ({
   )
 
   const data = {
-    labels: teams.map((entry) => entry.team.name),
+    labels: teams.map((entry) =>
+      entry.clinchIndicator
+        ? `${entry.clinchIndicator} - ${entry.team.shortName}`
+        : entry.team.shortName
+    ),
     datasets: [
       {
         label: 'Current Points',
@@ -140,7 +136,6 @@ const Chart = ({
     <Bar
       options={{
         ...options,
-        maintainAspectRatio: aspectRatio,
         plugins: {
           ...options.plugins,
           legend: legend ? options.plugins.legend : false,
@@ -153,7 +148,8 @@ const Chart = ({
           ...options.scales,
           x: {
             ...options.scales.x,
-            max,
+            min: range.min,
+            max: range.max,
           },
         },
       }}

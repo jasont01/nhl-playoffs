@@ -105,7 +105,10 @@ const App = () => {
     }
 
     const isEliminated = (team, division) =>
-      divisionEliminated(team, division) && wildCardEliminated(team, division)
+      team.clinchIndicator
+        ? false
+        : divisionEliminated(team, division) &&
+          wildCardEliminated(team, division)
 
     axios.get(`${API_URL}/standings/byDivision`).then((res) => {
       const data = res.data.records.map((division) => ({
@@ -113,6 +116,7 @@ const App = () => {
         teamRecords: division.teamRecords.map((record) => ({
           ...record,
           team: teams.find((t) => t.id === record.team.id), // merge additional team data
+          possiblePts: record.points + (82 - record.gamesPlayed) * 2,
           eliminated: isEliminated(record, division),
         })),
       }))
@@ -129,11 +133,11 @@ const App = () => {
         <Title order={1}>NHL Standings</Title>
       </Box>
       <Tabs>
-        <Tabs.Tab label='Division'>
-          <Division options={divisions} standings={standings} />
-        </Tabs.Tab>
         <Tabs.Tab label='Wildcard'>
           <Wildcard options={conferences} standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='Division'>
+          <Division options={divisions} standings={standings} />
         </Tabs.Tab>
         <Tabs.Tab label='Conference'>
           <Conference options={conferences} standings={standings} />

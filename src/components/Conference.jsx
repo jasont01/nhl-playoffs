@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Box, Select } from '@mantine/core'
 import Chart from './Chart'
+import { chartRange } from '../utils/chartRange'
 
 const Conference = ({ options, standings }) => {
   const [conference, setConference] = useState(null)
   const [data, setData] = useState([])
+  const [range, setRange] = useState({ min: 0, max: 180 })
 
   useEffect(() => {
     const teamRecords = standings
@@ -14,6 +16,12 @@ const Conference = ({ options, standings }) => {
       .sort((a, b) => a.leagueRank - b.leagueRank)
     setData(teamRecords)
   }, [conference, standings])
+
+  useEffect(() => {
+    if (!data.length) return
+    console.log(data)
+    setRange(chartRange(data))
+  }, [data])
 
   return (
     <>
@@ -25,9 +33,10 @@ const Conference = ({ options, standings }) => {
         />
       </Box>
       {conference && (
-        <Box className='chart' mx='2em'>
+        <Box className='chart' mx='2em' sx={{ height: '69vh' }}>
           <Chart
             teams={data}
+            range={range}
             title={`${
               options.find((option) => option.value === conference).label
             } Conference`}
