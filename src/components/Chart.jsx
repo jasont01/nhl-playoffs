@@ -59,6 +59,9 @@ const options = {
     },
     y: {
       stacked: true,
+      ticks: {
+        callback: () => ' ',
+      },
     },
   },
 }
@@ -90,7 +93,7 @@ const plugins = [
   },
 ]
 
-const Chart = ({ title, teams, legend = true, range }) => {
+const Chart = ({ title, teams, legend = true, range, wildcard = false }) => {
   const teamColors = useMemo(
     () =>
       teams.map((entry) =>
