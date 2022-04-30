@@ -7,6 +7,7 @@ import Conference from './components/Conference'
 import League from './components/League'
 import WinsAboveAvg from './components/WinsAboveAvg'
 import Playoffs from './components/Playoffs'
+import Stats from './components/Stats'
 import NHL from './logos/NHL'
 
 const API_URL = 'https://statsapi.web.nhl.com/api/v1'
@@ -155,6 +156,9 @@ const App = () => {
         </Tabs.Tab>
         <Tabs.Tab label='Playoff Picture'>
           <Playoffs standings={standings} />
+        </Tabs.Tab>
+        <Tabs.Tab label='Stats'>
+          <Stats standings={standings} />
         </Tabs.Tab>
       </Tabs>
     </>
